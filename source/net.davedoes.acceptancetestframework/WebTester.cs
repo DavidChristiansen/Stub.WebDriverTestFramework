@@ -11,13 +11,14 @@ namespace net.davedoes.acceptancetestframework {
         public void ShutDown() {
             try {
                 _driver.Close();
+                _driver.Quit();
             } catch (Exception) {
                 // Ignore errors if unable to close the browser
             }
         }
 
         public virtual void Run(Action<IWebDriver> action) {
-            _driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(4));
+            //_driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(4));
 
             try {
                 action(_driver);

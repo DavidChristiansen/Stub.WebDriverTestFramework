@@ -11,14 +11,13 @@ namespace net.davedoes.acceptancetestframework.demo_nunit {
             BeforeTest(InitTest);
             TestScript(driver => {
                 driver.Navigate().GoToUrl(baseURL + "/en-us/default.aspx");
-                Assert.AreEqual("Downloads and support", driver.FindElement(By.XPath("//div[@id='ctl00_ctl17_BodyRepeater_ctl00_ctl01_ColumnRepeater_ctl00_RowRepeater_ctl02_CellRepeater_ctl00_ctl01_clientID']/div/h3")).Text);
-                driver.FindElement(By.CssSelector("a.hpImage_Link > img.hpImage_Img")).Click();
-                Assert.AreEqual("4G LTE lightning-fast speed", driver.FindElement(By.XPath("//div[@id='ctl00_wpcBBDeviceList1_listWrapper']/div/div[2]/div[2]/div[2]/div")).Text);
-                Assert.AreEqual("From $99.99", driver.FindElement(By.LinkText("From $99.99")).Text);
+                Assert.AreEqual("Microsoft Corporation: Software, Smartphones, Online, Games, Cloud Computing, IT Business Technology, Downloads", driver.Title);
+                driver.FindElement(By.Id("ctl00_ctl14_ItemsRepeater_ctl00_ItemLink")).Click();
+                driver.FindElement(By.XPath("//a[contains(text(),'Windows Phone')]")).Click();
+                Assert.AreEqual("Windows Phone | Cell Phones, Mobile Downloads, Mobile Apps, and More | Windows Phone 7", driver.Title);
+                driver.FindElement(By.LinkText("Buy")).Click();
+                Assert.AreEqual("Smartphone | Compare Windows 7 Phones | Windows Mobile Phones | Windows Phone 7", driver.Title);
                 driver.FindElement(By.XPath("//img[@alt='Nokia Lumia 900 (Black)']")).Click();
-                Assert.AreEqual("Nokia Lumia 900 (Black)", driver.FindElement(By.CssSelector("h2.name.styleD")).Text);
-                Assert.AreEqual("Nokia Lumia 900", driver.Title);
-                Assert.IsTrue(Regex.IsMatch(driver.FindElement(By.LinkText("exact:Buy for $99.99*")).Text, "^exact:Buy for \\$99\\.99[\\s\\S]*$"));
             }, BrowserTypes.IE);
         }
     }
