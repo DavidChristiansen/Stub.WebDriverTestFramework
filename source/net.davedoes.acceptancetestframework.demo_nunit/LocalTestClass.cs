@@ -19,7 +19,7 @@ namespace net.davedoes.acceptancetestframework.demo_nunit {
                 Assert.AreEqual("Nokia Lumia 900 (Black)", driver.FindElement(By.CssSelector("h2.name.styleD")).Text);
                 Assert.AreEqual("Nokia Lumia 900", driver.Title);
                 Assert.IsTrue(Regex.IsMatch(driver.FindElement(By.LinkText("exact:Buy for $99.99*")).Text, "^exact:Buy for \\$99\\.99[\\s\\S]*$"));
-            }, BrowserTypes.All);
+            }, BrowserTypes.IE);
         }
     }
 }
